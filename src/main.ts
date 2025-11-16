@@ -23,7 +23,7 @@ export default class MathJaxPreamblePlugin extends Plugin {
 
 		// Note: The following works as well, but this postprocessor is called for every section element,
 		// which is not ideal
-		
+
 		// this.registerMarkdownPostProcessor((el, ctx) => {
 		// 	this.manager.loadPreamble(ctx.sourcePath, ctx.frontmatter);
 		// }, -Infinity);
@@ -43,7 +43,6 @@ export default class MathJaxPreamblePlugin extends Plugin {
 			const view = leaf.view as MarkdownView;
 			const state = view.getState();
 			const eState = view.getEphemeralState();
-			view.previewMode.rerender(true);
 			const editor = view.editor;
 			editor.setValue(editor.getValue());
 			if (state.mode === 'preview') {
