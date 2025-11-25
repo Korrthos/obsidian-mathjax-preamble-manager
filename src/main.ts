@@ -41,9 +41,12 @@ export default class MathJaxPreamblePlugin extends Plugin {
 
 		for (const leaf of this.app.workspace.getLeavesOfType('markdown')) {
 			const view = leaf.view as MarkdownView;
+			const editor = view?.editor;
+			if (!editor) {
+				continue;
+			}
 			const state = view.getState();
 			const eState = view.getEphemeralState();
-			const editor = view.editor;
 			editor.setValue(editor.getValue());
 			if (state.mode === 'preview') {
 				// Temporarily switch to Editing view and back to Reading view
